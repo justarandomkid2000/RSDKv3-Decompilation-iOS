@@ -67,6 +67,11 @@ void InitMods()
     disableSaveIniOverride = false;
     sprintf(savePath, "");
 
+    // Force mods path to Documents on iOS
+#if RETRO_PLATFORM == RETRO_iOS
+    sprintf(modsPath, "%s/", getDocumentsPath());
+#endif
+
     char modBuf[0x100];
     sprintf(modBuf, "%smods", modsPath);
     fs::path modPath = ResolvePath(modBuf);
