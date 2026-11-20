@@ -229,6 +229,7 @@ jobs:
             -I ios-deps/include \
             -I ios-deps/include/SDL2 \
             -I dependencies/all/tinyxml2 \
+            -I dependencies/all/theoraplay
             -I SonicCDDecomp \
             -DRETRO_USE_MOD_LOADER=1 \
             -DRETRO_USING_OPENGL=0 \
