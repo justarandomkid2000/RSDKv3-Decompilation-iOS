@@ -222,6 +222,13 @@ jobs:
           ${{ env.CC_IOS }} -arch arm64 -miphoneos-version-min=13.0 -isysroot ${{ env.SDK_PATH }} \
             -c dependencies/all/tinyxml2/tinyxml2.cpp -o ios-deps/tinyxml2.o
           ar rcs ios-deps/lib/libtinyxml2.a ios-deps/tinyxml2.o
+     
+      - name: Find mod loader source
+        run: |
+          find . -name "*ModAPI*" -o -name "*modapi*" | head -20
+          ls -la SonicCDDecomp/ | grep -i mod
+          ls -la RSDKv3/ | grep -i mod
+     
       - name: Build mod loader
         run: |
           mkdir -p ios-deps/lib
