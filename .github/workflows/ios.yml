@@ -233,6 +233,7 @@ jobs:
         run: |
           mkdir -p ios-deps/lib
           ${{ env.CC_IOS }} -arch arm64 -miphoneos-version-min=13.0 -isysroot ${{ env.SDK_PATH }} \
+            -std=c++17 \
             -I ios-deps/include \
             -I ios-deps/include/SDL2 \
             -I dependencies/all/tinyxml2 \
