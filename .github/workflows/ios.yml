@@ -215,7 +215,12 @@ jobs:
           printf '#include <cstdio>\nchar savePath[0x100];\nint GetSceneID(unsigned char listID, const char *sceneName) { return -1; }\n' > /tmp/modapi_stub.cpp
           xcrun -sdk iphoneos clang++ -arch arm64 -std=gnu++14 -miphoneos-version-min=13.0 -c /tmp/modapi_stub.cpp -o /tmp/modapi_stub.o
           ar rcs dependencies/ios/libModAPIStub.a /tmp/modapi_stub.o
-
+      - name: Build tinyxml2
+        run: |
+          mkdir -p ios-deps/lib
+          ${{ env.CC_IOS }} -arch arm64 -miphoneos-version-min=13.0 -isysroot ${{ env.SDK_PATH }} \
+            -c dependencies/all/tinyxml2/tinyxml2.cpp -o ios-deps/tinyxml2.o
+          ar rcs ios-deps/lib/libtinyxml2.a ios-deps/tinyxml2.o
       - name: Build RSDKv3 iOS
         run: |
           xcodebuild -project "RSDKv3 ios.xcodeproj" \
