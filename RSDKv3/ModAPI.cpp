@@ -244,7 +244,7 @@ void ScanModFolder(ModInfo *info)
 
     fs::path modPath = ResolvePath(modBuf);
     PrintLog("MOD PATH (ScanModFolder): %s", modPath.string().c_str());
-    PrintLog("MOD PATH (ScanModFolder): %s", modPath.string().c_str());
+    PrintLog("Scanning mod dir: %s", modDir.c_str());
 
     const std::string modDir = modPath.string() + "/" + info->folder;
 
@@ -287,6 +287,8 @@ void ScanModFolder(ModInfo *info)
                         }
 
                         info->fileMap.insert(std::pair<std::string, std::string>(pathLower, modBuf));
+                        PrintLog("Added script: %s", pathLower);
+                    }
                     }
                 }
             }
