@@ -241,12 +241,11 @@ void ScanModFolder(ModInfo *info)
 
     char modBuf[0x100];
     sprintf(modBuf, "%smods", modsPath);
-
     fs::path modPath = ResolvePath(modBuf);
     PrintLog("MOD PATH (ScanModFolder): %s", modPath.string().c_str());
-    PrintLog("Scanning mod dir: %s", modDir.c_str());
 
     const std::string modDir = modPath.string() + "/" + info->folder;
+    PrintLog("Scanning mod dir: %s", modDir.c_str());
 
     // Check for Data/ replacements
     fs::path dataPath = ResolvePath(modDir + "/Data");
