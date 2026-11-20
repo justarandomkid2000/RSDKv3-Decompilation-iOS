@@ -231,6 +231,7 @@ jobs:
             HEADER_SEARCH_PATHS="$(pwd)/ios-deps/include $(pwd)/ios-deps/include/SDL2 $(pwd)/ios-deps/include/vorbis $(pwd)/ios-deps/include/ogg $(pwd)/ios-deps/include/theora $(pwd)/SonicCDDecomp $(pwd)/dependencies/all/theoraplay" \
             GCC_PREPROCESSOR_DEFINITIONS='RETRO_USING_OPENGL=0 RETRO_USE_MOD_LOADER=1 $(inherited)' \
             OTHER_CFLAGS='-Wno-deprecated-declarations -Wno-nonportable-include-path'
+            $(pwd)/dependencies/all/tinyxml2
 
       - name: Package IPA
         run: |
