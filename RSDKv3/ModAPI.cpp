@@ -75,6 +75,7 @@ void InitMods()
     char modBuf[0x100];
     sprintf(modBuf, "%smods", modsPath);
     fs::path modPath = ResolvePath(modBuf);
+    PrintLog("MOD PATH (InitMods): %s", modPath.string().c_str());
 
     if (fs::exists(modPath) && fs::is_directory(modPath)) {
         std::string mod_config = modPath.string() + "/modconfig.ini";
@@ -237,6 +238,7 @@ void ScanModFolder(ModInfo *info)
     sprintf(modBuf, "%smods", modsPath);
 
     fs::path modPath = ResolvePath(modBuf);
+    PrintLog("MOD PATH (ScanModFolder): %s", modPath.string().c_str());
 
     const std::string modDir = modPath.string() + "/" + info->folder;
 
