@@ -231,17 +231,13 @@ jobs:
      
       - name: Build mod loader
         run: |
-          mkdir -p ios-deps/lib
-          ${{ env.CC_IOS }} -arch arm64 -miphoneos-version-min=13.0 -isysroot ${{ env.SDK_PATH }} \
-            -I ios-deps/include \
-            -I ios-deps/include/SDL2 \
-            -I dependencies/all/tinyxml2 \
-            -I dependencies/all/theoraplay
-            -I SonicCDDecomp \
-            -DRETRO_USE_MOD_LOADER=1 \
-            -DRETRO_USING_OPENGL=0 \
-            -c SonicCDDecomp/ModAPI.cpp -o ios-deps/ModAPI.o
-          ar rcs ios-deps/lib/libModAPI.a ios-deps/ModAPI.o
+          echo "=== Looking for mod files ==="
+          find . -name "*Mod*" -type f | head -30
+          echo "=== SonicCDDecomp contents ==="
+          ls -la SonicCDDecomp/ | head -40
+          echo "=== RSDKv3 contents ==="
+          ls -la RSDKv3/ | head -40
+          exit 1
       
       - name: Build RSDKv3 iOS
         run: |
