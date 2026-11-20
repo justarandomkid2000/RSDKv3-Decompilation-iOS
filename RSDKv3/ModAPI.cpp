@@ -234,10 +234,16 @@ void ScanModFolder(ModInfo *info)
     if (!info)
         return;
 
+    // Force Documents path on iOS
+#if RETRO_PLATFORM == RETRO_iOS
+    sprintf(modsPath, "%s/", getDocumentsPath());
+#endif
+
     char modBuf[0x100];
     sprintf(modBuf, "%smods", modsPath);
 
     fs::path modPath = ResolvePath(modBuf);
+    PrintLog("MOD PATH (ScanModFolder): %s", modPath.string().c_str());
     PrintLog("MOD PATH (ScanModFolder): %s", modPath.string().c_str());
 
     const std::string modDir = modPath.string() + "/" + info->folder;
